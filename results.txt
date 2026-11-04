@@ -1,0 +1,70 @@
+Run: Qwen/Qwen3-4B tokenizer (vocabulary size 151,669)
+Data: 300 sentences each from Bangla and English Wikipedia (20231101.bn / 20231101.en)
+
+tokenize(' hello') -> ['Ġhello']
+word-start marker  -> 'Ġ'
+
+Bangla sentences:  300
+English sentences: 300
+
+
+=== 1. Fertility ===
+
+Bangla
+  words analysed      : 4953
+  mean tokens/word    : 7.35
+  median tokens/word  : 7
+  max tokens/word     : 29
+  words > depth 10    : 14.6%
+
+English
+  words analysed      : 6857
+  mean tokens/word    : 1.30
+  median tokens/word  : 1
+  max tokens/word     : 11
+  words > depth 10    : 0.0%
+
+Bangla / English fertility ratio: 5.67x
+
+
+=== 2. Vocabulary coverage ===
+
+vocabulary size                       : 151669
+distinct entries used by Bangla text  : 188
+  decoding to well-formed text        : 130
+  holding a partial UTF-8 sequence    : 58
+
+token occurrences                     : 36198
+  that are partial sequences          : 25280 (69.8%)
+
+vocabulary entries that are only dependent signs: 4
+  'à¦¾'      -> 'া'
+  'à§į'      -> '্'
+  'à§ĩ'      -> 'ে'
+  'à¦¿'      -> 'ি'
+
+basic letters with a single token (30): অআইঈউএওঔকখগঙচছজটডণতথদধনপফবভমযর
+basic letters needing several     (9): ঊঋঌঐঘঝঞঠঢ
+
+
+=== Worked example ===
+
+word   : বিশ্ববিদ্যালয়
+tokens : 16
+
+  'Ġà¦'          -> ' �'
+  '¬'            -> '�'
+  'à¦¿à¦'        -> 'ি�'
+  '¶'            -> '�'
+  'à§įà¦'        -> '্�'
+  '¬'            -> '�'
+  'à¦¬'          -> 'ব'
+  'à¦¿à¦'        -> 'ি�'
+  '¦'            -> '�'
+  'à§įà¦'        -> '্�'
+  '¯'            -> '�'
+  'à¦¾à¦'        -> 'া�'
+  '²'            -> '�'
+  'à¦¯'          -> 'য'
+  'à¦'           -> '�'
+  '¼'            -> '�'
